@@ -10,7 +10,7 @@ import { Typography } from '@material-ui/core';
 function TodoApp() {
     const initialTodos = [
         { id: 1, task: 'Walk cats', completed: false },
-        { id: 2, task: 'Ship Package', completed: false },
+        { id: 2, task: 'Ship Package', completed: true },
         { id: 3, task: 'Clean kitchen', completed: false }
     ]
     const [todos, setTodos] = useState(initialTodos);
@@ -31,8 +31,12 @@ function TodoApp() {
                     <Typography color='inherit'>Todos with Hooks</Typography>
                 </Toolbar>
             </AppBar>
-            <TodoForm addTodo={addTodo} />
-            <TodoList todos={todos} />
+            <Grid container justify='center' style={{ marginTop: '1rem' }}>
+                <Grid item xs={11} md={8} lg={4}>
+                    <TodoForm addTodo={addTodo} />
+                    <TodoList todos={todos} />
+                </Grid>
+            </Grid>
         </Paper>
     )
 }
