@@ -10,12 +10,16 @@ export default function UpdateItemForm({ task, id, updateTodo, toggleEditing }) 
             updateTodo(id, value);
             reset();
             toggleEditing();
-        }}>
+        }}
+            style={{ marginLeft: '1rem', width: '60%' }}
+        >
             <TextField
                 value={value}
                 margin='normal'
                 onChange={handleChange}
-                style={{ width: "100%" }} />
+                fullWidth
+                autoFocus
+            />
         </form>
     )
 }

@@ -10,7 +10,7 @@ function TodoList({ todos, removeTodo, toggleComplete, updateTodo }) {
     return (
         <Paper>
             <List>
-                {todos.map(todo => (
+                {todos.map((todo, i) => (
                     <>
                         <Todo
                             key={todo.id}
@@ -21,7 +21,8 @@ function TodoList({ todos, removeTodo, toggleComplete, updateTodo }) {
                             toggleComplete={toggleComplete}
                             updateTodo={updateTodo}
                         />
-                        <Divider />
+                        {i < todos.length - 1 && <Divider />}
+                        {/* Cleans up bottom of list: No divider on last item */}
                     </>
                 ))}
             </List>
