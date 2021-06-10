@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useTodoState from '../hooks/useTodoState';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import Paper from '@material-ui/core/Paper';
@@ -6,7 +7,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
-import uuid from 'uuid/v4';
 
 function TodoApp() {
     const initialTodos = [
@@ -14,26 +14,10 @@ function TodoApp() {
         { id: 2, task: 'Ship Package', completed: true },
         { id: 3, task: 'Clean kitchen', completed: false }
     ];
-    const [todos, setTodos] = useState(initialTodos);
-    const addTodo = newTodoText => {
-        setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }])
-    };
-    const removeTodo = (todoId) => {
-        const updatedTodos = todos.filter(todo => todo.id !== todoId)
-        setTodos(updatedTodos);
-    };
-    const toggleComplete = (todoId) => {
-        const updatedTodos = todos.map(todo =>
-            todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-        );
-        setTodos(updatedTodos);
-    };
-    const updateTodo = (todoId, newTask) => {
-        const updatedTodos = todos.map(todo =>
-            todo.id === todoId ? { ...todo, task: newTask } : todo
-        );
-        setTodos(updatedTodos);
-    };
+
+    // Custom hook for all the functionality
+    const { todos, addTodo, removeTodo, updateTodo, toggleComplete } = useTodoState(initialTodos);
+
     return (
         <Paper style={{
             padding: 0,
@@ -45,7 +29,7 @@ function TodoApp() {
         >
             <AppBar color='primary' position='static' style={{ height: '64px' }} >
                 <Toolbar>
-                    <Typography color='inherit'>Todos with Hooks</Typography>
+                    <Typography color='inherit'>TaskList: A Chore Tracker</Typography>
                 </Toolbar>
             </AppBar>
             <Grid container justify='center' style={{ marginTop: '1rem' }}>
