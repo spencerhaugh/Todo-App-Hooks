@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
-import { Typography, unstable_createMuiStrictModeTheme } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import uuid from 'uuid/v4';
 
 function TodoApp() {
@@ -28,6 +28,12 @@ function TodoApp() {
         );
         setTodos(updatedTodos);
     };
+    const updateTodo = (todoId, newTask) => {
+        const updatedTodos = todos.map(todo =>
+            todo.id === todoId ? { ...todo, task: newTask } : todo
+        );
+        setTodos(updatedTodos);
+    };
     return (
         <Paper style={{
             padding: 0,
@@ -45,7 +51,12 @@ function TodoApp() {
             <Grid container justify='center' style={{ marginTop: '1rem' }}>
                 <Grid item xs={11} md={8} lg={4}>
                     <TodoForm addTodo={addTodo} />
-                    <TodoList todos={todos} removeTodo={removeTodo} toggleComplete={toggleComplete} />
+                    <TodoList
+                        todos={todos}
+                        removeTodo={removeTodo}
+                        toggleComplete={toggleComplete}
+                        updateTodo={updateTodo}
+                    />
                 </Grid>
             </Grid>
         </Paper>
