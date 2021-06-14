@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {TodosContext} from '../contexts/todos.context';
+import React, { useContext } from 'react';
+import { TodosContext } from '../contexts/todos.context';
 import Todo from './Todo';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
@@ -7,7 +7,7 @@ import Divider from '@material-ui/core/Divider';
 
 
 function TodoList() {
-    const {todos} = useContext(TodosContext);
+    const todos = useContext(TodosContext);
     if (todos.length)
         return (
             <Paper>

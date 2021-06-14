@@ -9,11 +9,11 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import CloseIcon from '@material-ui/icons/Close';
-import { TodosContext } from '../contexts/todos.context';
+import { DispatchContext } from '../contexts/todos.context';
 
 
 export default function Todo({ task, completed, id }) {
-    const { dispatch } = useContext(TodosContext);
+    const dispatch = useContext(DispatchContext);
     const [editing, toggleEditing] = useToggleState(false);
     return (
         <ListItem style={{ height: '64px' }}>
