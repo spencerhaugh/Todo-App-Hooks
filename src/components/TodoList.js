@@ -13,14 +13,14 @@ function TodoList() {
             <Paper>
                 <List>
                     {todos.map((todo, i) => (
-                        <div key={todo.id}>
+                        <React.Fragment key={i}>
                             <Todo
                                 {...todo}
                                 key={todo.id}
                             />
                             {i < todos.length - 1 && <Divider />}
                             {/* Cleans up bottom of list: No divider on last item */}
-                        </div>
+                        </React.Fragment>
                     ))}
                 </List>
             </Paper>
