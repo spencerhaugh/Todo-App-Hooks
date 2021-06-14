@@ -8,6 +8,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import CloseIcon from '@material-ui/icons/Close';
 import {TodosContext} from '../contexts/todos.context';
 
 
@@ -31,7 +32,7 @@ export default function Todo({ task, completed, id }) {
             }
             <ListItemSecondaryAction>
                 <IconButton aria-label='Edit' onClick={() => toggleEditing(!editing)}>
-                    <EditIcon />
+                    { editing ? <CloseIcon /> : <EditIcon />}
                 </IconButton>
                 <IconButton aria-label='Delete' onClick={() => removeTodo(id)}>
                     <DeleteIcon />
