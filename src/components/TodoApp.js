@@ -1,5 +1,5 @@
 import React from 'react';
-import useTodoState from '../hooks/useTodoState';
+import {TodosProvider} from '../contexts/todos.context';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import Paper from '@material-ui/core/Paper';
@@ -9,15 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 
 function TodoApp() {
-    const initialTodos = [
-        { id: 1, task: 'Walk cats', completed: false },
-        { id: 2, task: 'Ship Package', completed: true },
-        { id: 3, task: 'Clean kitchen', completed: false }
-    ];
-
-    // Custom hook for all the functionality
-    const { todos, addTodo, removeTodo, updateTodo, toggleComplete } = useTodoState(initialTodos);
-
     return (
         <Paper style={{
             padding: 0,
@@ -34,26 +25,13 @@ function TodoApp() {
             </AppBar>
             <Grid container justify='center' style={{ marginTop: '1rem' }}>
                 <Grid item xs={11} md={8} lg={4}>
-                    <TodoForm addTodo={addTodo} />
-                    <TodoList
-                        todos={todos}
-                        removeTodo={removeTodo}
-                        toggleComplete={toggleComplete}
-                        updateTodo={updateTodo}
-                    />
+                    <TodosProvider>
+                    <TodoForm />
+                    <TodoList/>
+                    </TodosProvider>
                 </Grid>
             </Grid>
         </Paper>
     )
-}
-
+};
 export default TodoApp;
-
-// wireframe:
-// TodoApp
-// -TodoForm
-// -TodoList
-//     -TodoItems
-
-// Each Item
-// id, task, completed
