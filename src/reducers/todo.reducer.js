@@ -19,30 +19,8 @@ const reducer = (state, action) => {
 
 export default reducer;
 
+// Expect
 // { type: "ADD", task: "Walk Dog" }
 // { type: "REMOVE", id: 1234 }
 // { type: "COMPLETE", id: 1234 }
 // { type: "UPDATE", id: 1234, newTask: "Walk the dogs" }
-
-
-//  OLD METHODS FROM useTodoState hook:
-
-// addTodo: newTodoText => {
-//     setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }])
-// },
-//     removeTodo: (todoId) => {
-//         const updatedTodos = todos.filter(todo => todo.id !== todoId)
-//         setTodos(updatedTodos);
-//     },
-//         toggleComplete: (todoId) => {
-//             const updatedTodos = todos.map(todo =>
-//                 todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-//             );
-//             setTodos(updatedTodos);
-//         },
-// updateTodo: (todoId, newTask) => {
-//     const updatedTodos = todos.map(todo =>
-//         todo.id === todoId ? { ...todo, task: newTask } : todo
-//     );
-//     setTodos(updatedTodos);
-// }
